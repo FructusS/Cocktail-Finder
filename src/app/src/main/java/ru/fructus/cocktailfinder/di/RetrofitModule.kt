@@ -7,6 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import ru.fructus.cocktailfinder.data.remote.DrinkApi
 import java.util.concurrent.TimeUnit
 
@@ -18,13 +19,9 @@ object RetrofitModule {
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder().readTimeout(30, TimeUnit.SECONDS)
             .connectTimeout(30, TimeUnit.SECONDS).retryOnConnectionFailure(true)
-            .callTimeout(30, TimeUnit.SECONDS).addNetworkInterceptor(
-                HttpLoggingInterceptor { message ->
-                    println("LOG-NET: $message")
-                }.apply {
-                    level = HttpLoggingInterceptor.Level.BODY
-                },
-            ).build()
+            .callTimeout(30, TimeUnit.SECONDS)
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .build()
     }
 
 
