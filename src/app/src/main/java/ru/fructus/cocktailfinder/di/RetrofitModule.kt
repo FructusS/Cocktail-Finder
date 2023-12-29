@@ -27,7 +27,8 @@ object RetrofitModule {
 
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder().baseUrl("www.thecocktaildb.com/api/json/v1/1/random.php").build()
+        return Retrofit.Builder().baseUrl("https://www.thecocktaildb.com/api/json/v1/1/")
+            .client(okHttpClient).addConverterFactory(GsonConverterFactory.create()).build()
     }
 
 
