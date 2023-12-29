@@ -8,8 +8,8 @@ import javax.inject.Singleton
 @Singleton
 class DrinkRepository @Inject constructor(private val drinkApi: DrinkApi) {
 
-    suspend fun getRandomDrinkList() : List<DrinkDto>{
-        return drinkApi.getRandomDrinkList().map { it.toDrinkDto() }
+    suspend fun getRandomDrinkList() : List<DrinkDto>?{
+        return drinkApi.getRandomDrinkList()?.drinks?.map { it.toDrinkDto() }
     }
 
 }
