@@ -33,7 +33,7 @@ object RetrofitModule {
 
 
     @Provides
-    fun provideDrinkApi(retrofit: Retrofit) {
-        retrofit.create(DrinkApi::class.java)
+    fun provideDrinkApi(retrofit: Retrofit): DrinkApi {
+        return retrofit.create(DrinkApi::class.java)
     }
 }
