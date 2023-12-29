@@ -52,6 +52,36 @@ android {
 
 dependencies {
 
+
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-common:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion")
+
+    val retrofitVersion = "2.9.0"
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+
+    val okhttpVersion = "4.9.0"
+    implementation("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
+
+    val hiltVersion = "1.1.0"
+    val daggerVersion = "2.48"
+    implementation("androidx.hilt:hilt-navigation-compose:$hiltVersion")
+    implementation("com.google.dagger:hilt-android:$daggerVersion")
+    ksp("com.google.dagger:hilt-android-compiler:$daggerVersion")
+
+    val liveDataVersion = "2.6.2"
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$liveDataVersion")
+
+    val viewModelVersion = "2.6.2"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$viewModelVersion")
+
+
+
+
+
+
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.8.2")
