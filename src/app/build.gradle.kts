@@ -52,6 +52,9 @@ android {
 
 dependencies {
 
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    val glideVersion = "2.2.13"
+    implementation("com.github.skydoves:landscapist-glide:$glideVersion")
 
     val roomVersion = "2.6.1"
     implementation("androidx.room:room-common:$roomVersion")
@@ -78,9 +81,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$viewModelVersion")
     val navigationVersion = "2.7.6"
     implementation("androidx.navigation:navigation-compose:$navigationVersion")
-
-
-
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
