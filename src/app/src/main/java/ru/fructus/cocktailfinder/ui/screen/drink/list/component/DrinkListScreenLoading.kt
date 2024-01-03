@@ -8,6 +8,6 @@ import androidx.compose.ui.Modifier
 import ru.fructus.cocktailfinder.ui.screen.drink.DrinkListContract
 
 @Composable
-fun DrinkListScreenLoading(state: DrinkListContract.State) {
+fun DrinkListScreenLoading() {
     CircularProgressIndicator(modifier = Modifier.wrapContentWidth().wrapContentHeight())
 }
