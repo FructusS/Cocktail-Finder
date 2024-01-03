@@ -6,16 +6,12 @@ import ru.fructus.cocktailfinder.ui.base.BaseContract
 interface DrinkListContract :
     BaseContract<DrinkListContract.State, DrinkListContract.Event, DrinkListContract.Effect> {
     sealed class Effect {
-        object OnBackPressed : Effect()
-        data class ShowToast(val message: String) : Effect()
     }
 
     sealed class Event {
         data class OnFavoriteClick(val drink: DrinkDto) : Event()
         object OnRefresh : Event()
         object OnEnterScreen : Event()
-        object OnBackPressed : Event()
-        data class ShowToast(val message: String) : Event()
     }
 
     sealed class State {
