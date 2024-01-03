@@ -51,7 +51,9 @@ android {
 }
 
 dependencies {
+    val materialVersion = "1.5.4"
 
+    implementation("androidx.compose.material:material:$materialVersion")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     val glideVersion = "1.0.0-beta01"
     implementation("com.github.bumptech.glide:compose:$glideVersion")
