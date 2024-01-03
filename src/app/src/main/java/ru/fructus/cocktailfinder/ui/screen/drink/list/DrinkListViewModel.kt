@@ -15,7 +15,8 @@ import ru.fructus.cocktailfinder.ui.screen.drink.DrinkListContract
 import javax.inject.Inject
 
 @HiltViewModel
-class DrinkListViewModel @Inject constructor(private val drinkRepository: DrinkRepository) : ViewModel(),
+class DrinkListViewModel @Inject constructor(private val drinkRepository: DrinkRepository) :
+    ViewModel(),
     DrinkListContract {
 
     private val _state = MutableStateFlow<DrinkListContract.State>(DrinkListContract.State.Loading)
@@ -39,7 +40,7 @@ class DrinkListViewModel @Inject constructor(private val drinkRepository: DrinkR
         }
     }
 
-    private fun getRandomDrink() {
+    fun getRandomDrink() {
         viewModelScope.launch(Dispatchers.IO) {
             _state.update {
                 DrinkListContract.State.Loading
@@ -64,7 +65,6 @@ class DrinkListViewModel @Inject constructor(private val drinkRepository: DrinkR
             }
         }
     }
-
 }
 
 
