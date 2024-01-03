@@ -24,7 +24,6 @@ class DrinkListViewModel @Inject constructor(private val drinkRepository: DrinkR
         get() = TODO("Not yet implemented")
 
     override fun event(event: DrinkListContract.Event) = when (event) {
-        DrinkListContract.Event.OnBackPressed -> TODO()
         DrinkListContract.Event.OnEnterScreen -> {
             getRandomDrink()
         }
