@@ -53,9 +53,8 @@ android {
 dependencies {
 
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    val glideVersion = "2.2.13"
-    implementation("com.github.skydoves:landscapist-glide:$glideVersion")
-
+    val glideVersion = "1.0.0-beta01"
+    implementation("com.github.bumptech.glide:compose:$glideVersion")
     val roomVersion = "2.6.1"
     implementation("androidx.room:room-common:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
