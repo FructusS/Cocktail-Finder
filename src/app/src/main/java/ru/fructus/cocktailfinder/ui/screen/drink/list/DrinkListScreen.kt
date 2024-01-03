@@ -19,22 +19,25 @@ fun DrinkListScreen(
     LaunchedEffect(key1 = state.value) {
         viewModel.event(DrinkListContract.Event.OnEnterScreen)
     }
-    
-    when(val currentState = state.value){
-        is DrinkListContract.State.Success -> {
-            DrinkListScreenSuccess(state = currentState)
-        }
-        is DrinkListContract.State.Error -> {
-            DrinkListScreenError(state = currentState)
-        }
-        DrinkListContract.State.Loading -> {
-            DrinkListScreenLoading(state = currentState)
-        }
-        DrinkListContract.State.NoItems -> {
-            DrinkListScreenNoItems(state = currentState)
+
+    Surface() {
+        when (val currentState = state.value) {
+            is DrinkListContract.State.Success -> {
+                DrinkListScreenSuccess(state = currentState, viewModel)
+            }
+
+            is DrinkListContract.State.Error -> {
+                DrinkListScreenError(state = currentState,
+                    getRandomDrink = { viewModel.getRandomDrink() })
+            }
+
+            DrinkListContract.State.Loading -> {
+                DrinkListScreenLoading()
+            }
+
+            DrinkListContract.State.NoItems -> {
+                DrinkListScreenNoItems(getRandomDrink = { viewModel.getRandomDrink() })
+            }
         }
     }
-
-    
-    
 }
