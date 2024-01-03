@@ -16,7 +16,7 @@ fun DrinkListScreen(
 ) {
     val state = viewModel.state.collectAsState()
 
-    LaunchedEffect(key1 = state) {
+    LaunchedEffect(key1 = state.value) {
         viewModel.event(DrinkListContract.Event.OnEnterScreen)
     }
     
