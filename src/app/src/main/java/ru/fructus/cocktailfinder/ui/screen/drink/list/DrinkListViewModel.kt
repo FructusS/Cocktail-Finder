@@ -29,9 +29,15 @@ class DrinkListViewModel @Inject constructor(private val drinkRepository: DrinkR
             getRandomDrink()
         }
 
-        is DrinkListContract.Event.OnFavoriteClick -> TODO()
-        DrinkListContract.Event.OnRefresh -> TODO()
-        is DrinkListContract.Event.ShowToast -> TODO()
+        is DrinkListContract.Event.OnFavoriteClick -> {
+            _state.update {
+                DrinkListContract.State.Success(listOf(event.drink.copy(isFavorite = !event.drink.isFavorite)))
+            }
+        }
+
+        is DrinkListContract.Event.OnRefresh -> {
+            getRandomDrink()
+        }
     }
 
     private fun getRandomDrink() {
