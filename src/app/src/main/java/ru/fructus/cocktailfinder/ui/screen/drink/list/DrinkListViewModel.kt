@@ -21,8 +21,10 @@ class DrinkListViewModel @Inject constructor(private val drinkRepository: DrinkR
 
     private val _state = MutableStateFlow<DrinkListContract.State>(DrinkListContract.State.Loading)
     override val state: StateFlow<DrinkListContract.State> = _state.asStateFlow()
-    override val effect: SharedFlow<DrinkListContract.Effect>
-        get() = TODO("Not yet implemented")
+
+        private val _effect = MutableSharedFlow<DrinkListContract.Effect>()
+    override val effect: SharedFlow<DrinkListContract.Effect> = _effect.asSharedFlow()
+
 
     override fun event(event: DrinkListContract.Event) = when (event) {
         DrinkListContract.Event.OnEnterScreen -> {
@@ -38,6 +40,7 @@ class DrinkListViewModel @Inject constructor(private val drinkRepository: DrinkR
         is DrinkListContract.Event.OnRefresh -> {
             getRandomDrink()
         }
+
     }
 
     fun getRandomDrink() {
