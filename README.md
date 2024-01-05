@@ -8,3 +8,4 @@
 - Coroutines
 - Room
 - Navigation Component
+- Glide
