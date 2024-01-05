@@ -34,8 +34,16 @@ fun DrinkListScreen(
     viewModel: DrinkListViewModel = hiltViewModel(), navigateToDrinkDetailsScreen: () -> Unit
 ) {
     val state = viewModel.state.collectAsState()
-
-    LaunchedEffect(key1 = state.value) {
+    val effect by viewModel.effect.collectAsState(
+        DrinkListContract.Effect.PullToRefresh
+    )
+    var isPullToRefresh by remember {
+        mutableStateOf(false)
+    }
+    val pullToRefreshState = rememberPullRefreshState(refreshing = isPullToRefresh, onRefresh = {
+        viewModel.event(DrinkListContract.Event.OnRefresh)
+    })
+    LaunchedEffect(key1 = state) {
         viewModel.event(DrinkListContract.Event.OnEnterScreen)
     }
     LaunchedEffect(key1 = effect) {
