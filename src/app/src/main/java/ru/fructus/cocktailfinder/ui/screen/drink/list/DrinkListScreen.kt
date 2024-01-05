@@ -38,6 +38,16 @@ fun DrinkListScreen(
     LaunchedEffect(key1 = state.value) {
         viewModel.event(DrinkListContract.Event.OnEnterScreen)
     }
+    LaunchedEffect(key1 = effect) {
+        viewModel.effect.collectLatest {
+            when (it) {
+                is DrinkListContract.Effect.PullToRefresh -> {
+                    isPullToRefresh = !isPullToRefresh
+                }
+            }
+        }
+    }
+
 
     Surface(
         modifier = Modifier
