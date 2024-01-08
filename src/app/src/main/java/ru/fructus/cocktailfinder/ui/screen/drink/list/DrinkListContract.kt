@@ -19,7 +19,7 @@ sealed interface DrinkListContract :
         object Loading : State()
         object NoItems : State()
 
-        data class Success(val list: List<DrinkDto>) : State()
+        data class Success(val drinks: List<DrinkDto>) : State()
         data class Error(val error: String) : State()
     }
 }
