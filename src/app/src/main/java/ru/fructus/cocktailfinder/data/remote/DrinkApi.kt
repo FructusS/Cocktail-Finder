@@ -1,12 +1,11 @@
 package ru.fructus.cocktailfinder.data.remote
 
 import retrofit2.http.GET
-import ru.fructus.cocktailfinder.domain.DrinkEntity
-import ru.fructus.cocktailfinder.domain.DrinkListEntity
+import ru.fructus.cocktailfinder.domain.DrinkRemoteEntityList
 
 interface DrinkApi {
 
     @GET("random.php")
-    suspend fun getRandomDrinkList() : DrinkListEntity?
+    suspend fun getRandomDrink() : DrinkRemoteEntityList?
 
 }
