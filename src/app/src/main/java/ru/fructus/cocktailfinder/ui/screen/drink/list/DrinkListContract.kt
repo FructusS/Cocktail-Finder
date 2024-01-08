@@ -1,9 +1,9 @@
-package ru.fructus.cocktailfinder.ui.screen.drink
+package ru.fructus.cocktailfinder.ui.screen.drink.list
 
 import ru.fructus.cocktailfinder.domain.DrinkDto
 import ru.fructus.cocktailfinder.ui.base.BaseContract
 
-interface DrinkListContract :
+sealed interface DrinkListContract :
     BaseContract<DrinkListContract.State, DrinkListContract.Event, DrinkListContract.Effect> {
     sealed class Effect {
         data object PullToRefresh : Effect()
