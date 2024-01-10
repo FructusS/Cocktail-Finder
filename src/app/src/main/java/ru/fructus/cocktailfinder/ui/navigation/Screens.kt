@@ -4,7 +4,8 @@ interface NavigationDestination{
     val route: String
     val titleScreen: Int?
 }
-object DrinkListScreen : NavigationDestination {
+
+object DrinkListDestination : NavigationDestination {
     override val route: String = "drink_list_screen"
     override val titleScreen: Int? = null
 }
