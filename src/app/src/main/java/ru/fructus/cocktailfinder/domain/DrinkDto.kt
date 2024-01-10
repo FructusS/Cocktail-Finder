@@ -1,7 +1,8 @@
 package ru.fructus.cocktailfinder.domain
 
+import kotlinx.serialization.Serializable
 import ru.fructus.cocktailfinder.data.local.DrinkLocalEntity
-
+@Serializable
 data class DrinkDto(
     val id: Int,
     val title: String,
