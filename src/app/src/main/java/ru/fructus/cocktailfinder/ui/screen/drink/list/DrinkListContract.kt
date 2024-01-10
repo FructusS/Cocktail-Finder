@@ -10,7 +10,7 @@ sealed interface DrinkListContract :
     }
 
     sealed class Event {
-        data class OnDrinkClick(val id: Int) : Event()
+        object OnRandomDrinkButtonClick : Event()
         data object OnRefresh : Event()
         data object OnEnterScreen : Event()
     }
