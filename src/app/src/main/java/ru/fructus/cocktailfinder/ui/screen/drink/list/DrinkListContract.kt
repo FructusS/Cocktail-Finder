@@ -7,6 +7,7 @@ sealed interface DrinkListContract :
     BaseContract<DrinkListContract.State, DrinkListContract.Event, DrinkListContract.Effect> {
     sealed class Effect {
         data object PullToRefresh : Effect()
+        object OnRandomDrinkButtonClick : Effect()
     }
 
     sealed class Event {
