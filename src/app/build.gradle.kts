@@ -3,6 +3,7 @@ plugins {
     kotlin("android")
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
+    id ("org.jetbrains.kotlin.plugin.serialization")
 }
 
 android {
@@ -51,6 +52,10 @@ android {
 }
 
 dependencies {
+
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+
     val materialVersion = "1.5.4"
 
     implementation("androidx.compose.material:material:$materialVersion")
