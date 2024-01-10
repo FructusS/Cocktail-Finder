@@ -3,4 +3,5 @@
     <string name="id">Id %s</string>
     <string name="no_items">No items</string>
     <string name="retry">Retry</string>
+    <string name="random_drink">Random drink</string>
 </resources>
