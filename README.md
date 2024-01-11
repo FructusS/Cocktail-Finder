@@ -1,5 +1,5 @@
 
-This is a practice test based on a   (<a href="https://github.com/KazanExpress/android-test-task">test task</a>)
+This is a practice test based on a <a href="https://github.com/KazanExpress/android-test-task">test task</a>
 <br>
 Technologies: 
 - Jetpack Compose
