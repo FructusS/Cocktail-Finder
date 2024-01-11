@@ -5,7 +5,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import ru.fructus.cocktailfinder.R
-import ru.fructus.cocktailfinder.ui.screen.drink.DrinkListContract
 
 @Composable
 fun DrinkListScreenNoItems(getRandomDrink: () -> Unit) {
