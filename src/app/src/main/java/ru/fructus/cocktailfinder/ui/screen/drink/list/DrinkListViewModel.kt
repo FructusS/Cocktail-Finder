@@ -3,7 +3,6 @@ package ru.fructus.cocktailfinder.ui.screen.drink.list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -13,18 +12,16 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import ru.fructus.cocktailfinder.data.repository.DrinkRepository
-import ru.fructus.cocktailfinder.ui.screen.drink.DrinkListContract
 import javax.inject.Inject
 
 @HiltViewModel
 class DrinkListViewModel @Inject constructor(private val drinkRepository: DrinkRepository) :
-    ViewModel(),
-    DrinkListContract {
-
-    private val _state = MutableStateFlow<DrinkListContract.State>(DrinkListContract.State.Loading)
+    ViewModel(), DrinkListContract {
+    private val _state: MutableStateFlow<DrinkListContract.State> =
+        MutableStateFlow(DrinkListContract.State.Loading)
     override val state: StateFlow<DrinkListContract.State> = _state.asStateFlow()
 
-        private val _effect = MutableSharedFlow<DrinkListContract.Effect>()
+    private val _effect = MutableSharedFlow<DrinkListContract.Effect>()
     override val effect: SharedFlow<DrinkListContract.Effect> = _effect.asSharedFlow()
     override fun event(event: DrinkListContract.Event) {
         return when (event) {
@@ -32,20 +29,17 @@ class DrinkListViewModel @Inject constructor(private val drinkRepository: DrinkR
 
                 onRandomDrinkButtonClick()
 
-    override fun event(event: DrinkListContract.Event) = when (event) {
-        DrinkListContract.Event.OnEnterScreen -> {
-            getRandomDrink()
-        }
+            }
 
-        is DrinkListContract.Event.OnFavoriteClick -> {
-            _state.update {
-                DrinkListContract.State.Success(listOf(event.drink.copy(isFavorite = !event.drink.isFavorite)))
+            DrinkListContract.Event.OnEnterScreen -> {
+                getDrinkList()
+            }
+
+            DrinkListContract.Event.OnRefresh -> {
+                getDrinkList()
             }
         }
-
-        is DrinkListContract.Event.OnRefresh -> {
-            getRandomDrink()
-        }
+    }
 
     private fun onRandomDrinkButtonClick() {
         viewModelScope.launch {
