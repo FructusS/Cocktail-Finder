@@ -26,7 +26,11 @@ class DrinkListViewModel @Inject constructor(private val drinkRepository: DrinkR
 
         private val _effect = MutableSharedFlow<DrinkListContract.Effect>()
     override val effect: SharedFlow<DrinkListContract.Effect> = _effect.asSharedFlow()
+    override fun event(event: DrinkListContract.Event) {
+        return when (event) {
+            is DrinkListContract.Event.OnRandomDrinkButtonClick -> {
 
+                onRandomDrinkButtonClick()
 
     override fun event(event: DrinkListContract.Event) = when (event) {
         DrinkListContract.Event.OnEnterScreen -> {
@@ -43,6 +47,10 @@ class DrinkListViewModel @Inject constructor(private val drinkRepository: DrinkR
             getRandomDrink()
         }
 
+    private fun onRandomDrinkButtonClick() {
+        viewModelScope.launch {
+            _effect.emit(DrinkListContract.Effect.OnRandomDrinkButtonClick)
+        }
     }
 
     private fun getDrinkList() {
