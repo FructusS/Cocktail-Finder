@@ -45,27 +45,26 @@ class DrinkListViewModel @Inject constructor(private val drinkRepository: DrinkR
 
     }
 
-    fun getRandomDrink() {
-        viewModelScope.launch(Dispatchers.IO) {
+    private fun getDrinkList() {
+        viewModelScope.launch {
             _state.update {
                 DrinkListContract.State.Loading
             }
             try {
-                val response = drinkRepository.getRandomDrinkList()
+                val response = drinkRepository.getDrinkList()
+
                 if (response.isNullOrEmpty()) {
                     _state.update {
                         DrinkListContract.State.NoItems
-
                     }
                 } else {
                     _state.update {
                         DrinkListContract.State.Success(response)
                     }
                 }
-
-            } catch (e: Exception) {
+            } catch (ex: Exception) {
                 _state.update {
-                    DrinkListContract.State.Error(e.localizedMessage)
+                    DrinkListContract.State.Error(ex.localizedMessage)
                 }
             }
         }
