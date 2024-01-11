@@ -1,11 +1,13 @@
 
-Это тренировочная работа (<a href="https://github.com/KazanExpress/android-test-task">Задание</a>)
+This is a practice test based on a   (<a href="https://github.com/KazanExpress/android-test-task">test task</a>)
 <br>
-Используемые технологии: 
+Technologies: 
 - Jetpack Compose
-- Hilt
+- MVI pattern
+- Dagger Hilt
 - Retrofit
 - Coroutines
 - Room
 - Navigation Component
 - Glide
+- Serialization
