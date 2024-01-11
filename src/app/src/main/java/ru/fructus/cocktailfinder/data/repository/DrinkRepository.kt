@@ -8,16 +8,18 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DrinkRepository @Inject constructor(private val drinkApi: DrinkApi, private val drinkDao: DrinkDao) {
+class DrinkRepository @Inject constructor(
+    private val drinkApi: DrinkApi, private val drinkDao: DrinkDao
+) {
 
-    suspend fun getRandomDrink() : DrinkDto? {
+    suspend fun getRandomDrink(): DrinkDto? {
         return drinkApi.getRandomDrink()?.drinks?.get(0)?.toDrinkDto()
-
     }
 
-
-    suspend fun getDrinkList() : List<DrinkDto>? {
+    suspend fun getDrinkList(): List<DrinkDto>? {
         return drinkDao.getDrinkList()?.map { it.toDrinkDto() }
     }
-    suspend fun updateDrink(drinkLocalEntity: DrinkLocalEntity) = drinkDao.updateDrink(drinkLocalEntity)
+
+    suspend fun updateDrink(drinkLocalEntity: DrinkLocalEntity) =
+        drinkDao.updateDrink(drinkLocalEntity)
 }
